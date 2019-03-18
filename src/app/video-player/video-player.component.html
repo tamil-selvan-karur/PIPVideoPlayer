@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="row video-player">
+    <div class="col-lg-6 browse-video-button">
+      <!-- <input type="file" (change) = "fileChange($event)"> -->
+      <form>
+        <div class="form-group">
+          <label for="selctVideoToPlay">Select Video to play</label>
+          <select class="form-control" id="selctVideoToPlay" [(ngModel)]="selectedFile" (change)="handleFileChange()"
+            name="selectedFile">
+            <option *ngFor="let video of videos" value="{{video.video_id}}">{{video.video_name}}</option>
+          </select>
+        </div>
+      </form>
+    </div>
+    <div class="col-lg-6 video-goes-here" *ngIf="atleastOneSelected">
+      <mat-video [src]="videoToPlay" autoplay="true"></mat-video>
+      <!-- <video width="320" height="240" id="videoPlayer" controls>
+        <source src="http://localhost:3000/video" type="video/mp4">
+      </video> -->
+    </div>
+  </div>
+</div>
